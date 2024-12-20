@@ -68,9 +68,8 @@ if st.session_state["button_1_clicked"]:
     st.dataframe(output)
 
 
-
 # Кнопка с сохранением состояния
-st.button("Рассчитать статистику по историческим данным",
+st.button("Построить график температуры по историческим данным",
     key = 'button_2',
     on_click=toggle_button,
     args=("button_2_clicked",)  
@@ -87,15 +86,11 @@ if st.session_state["button_2_clicked"]:
 
 
 # Добавляем форму для ввода API ключа
-# token = st.text_input("Введите API токен", "OpenWeatherMap API token")
+
 # Форма для ввода ключа
 with st.form(key="key_form"):
     key_entered = st.text_input("Введите API ключ:", type="password")  # Скрытое поле для ввода ключа
     submit_button = st.form_submit_button("Ввод")
-
-# Для безопасности скачиваем ключ из файла
-with open('Applied_python_hw_01_Streamlit/API_key.json') as file:
-    api_key = json.load(file)['key']
 
 # Подтверждаем ввод ключа (правильный он или нет будем проверять при обращении к API)
 if submit_button:
