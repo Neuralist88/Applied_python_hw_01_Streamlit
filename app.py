@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import json
-import requests
 import functions
 
 
@@ -117,26 +116,3 @@ if st.session_state["button_3_clicked"]:
     if is_anomalous:
         temperature = response[1]
         st.write(functions.check_curr_temp(temperature_results, temperature))
-
-# # URL для запроса к OpenWeatherMap API
-# url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={key_entered}&units=metric"
-
-# try:
-#     # Отправка запроса
-#     response = requests.get(url)
-    
-#     # Проверка статуса ответа
-#     if response.status_code == 200:
-#         # Если запрос успешный
-#         weather_data = response.json()
-#         temperature = weather_data['main']['temp']
-#         description = weather_data['weather'][0]['description']
-#         print(f"Текущая температура в {city}: {temperature}°C")
-        
-#     else:
-#         # Если произошла ошибка
-#         error_data = response.json()  # Получение JSON ошибки
-#         print(f"Ошибка: {error_data}")  # Печать всей ошибки в формате JSON
-
-# except requests.exceptions.RequestException as e:
-#     print(f"Ошибка соединения: {e}")
